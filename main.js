@@ -9,7 +9,6 @@ const haveExtraAnimation = document.querySelector("#have-animation-extra");
 const toastAlert = document.querySelector("#toastAlert");
 
 function encrypt(letter) {
-  let check = "";
   const values = {
     e: "enter",
     i: "imes",
@@ -75,6 +74,7 @@ function toast(message, color) {
 }
 
 timer(switchAnimation);
+
 btnEncrypt.addEventListener("click", (e) => {
   if (writter.value) {
     activeAnimation("lock");
@@ -95,7 +95,6 @@ btnEncrypt.addEventListener("click", (e) => {
 btnDecrypt.addEventListener("click", (e) => {
   if (writter.value) {
     activeAnimation("unlock");
-    // activeVideo("unlock");
     displayEncrypt.value = decrypt(writter.value);
     writter.value = "";
     toast("Desencriptado", "green");
@@ -108,9 +107,9 @@ copyText.addEventListener("click", async (e) => {
   if (displayEncrypt.value) {
     displayEncrypt.focus();
     displayEncrypt.select();
-    console.log("pado");
-    await navigator.clipboard.writeText(displayEncrypt.value);
     toast("Copiado", "green");
+    await navigator.clipboard.writeText(displayEncrypt.value);
+    
   } else {
     toast("Nada que copiar", "gray");
   }
