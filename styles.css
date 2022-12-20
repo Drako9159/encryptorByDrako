@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   max-width: 1600px;
+  min-width: 254px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -32,11 +33,10 @@ main {
   display: flex;
 
   width: 100%;
- 
 }
 .left {
   width: 60%;
- 
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,6 +98,9 @@ main {
   justify-content: center;
   font-size: 0.9rem;
   color: #727374;
+  margin: 10px;
+
+  padding: 10px;
 }
 .left .alert img {
   width: 20px;
@@ -107,7 +110,6 @@ main {
 }
 .right {
   width: 40%;
- 
 }
 .right .copy {
   display: flex;
@@ -147,13 +149,45 @@ main {
   main {
     flex-direction: column;
   }
-  .left{
+  .left {
     width: 100%;
   }
-  .right{
+  .left .actions {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+  .right {
     width: 100%;
   }
 }
+#have-animation{
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.animation {
+  filter: contrast(1%);
+  width: 150px;
+  position: absolute;
+  opacity: 0;
+  animation: lock 4s ease;
+}
+@keyframes lock {
+  0% {
+    top: 100px;
+  }
+  50% {
+    top: 230px;
+    opacity: 1;
+  }
+  100% {
+    top: 200px;
+    opacity: 0;
+  }
+}
+
 footer {
   display: flex;
   width: 100%;
@@ -177,4 +211,3 @@ footer ul li img {
 
   filter: contrast(1%);
 }
-
