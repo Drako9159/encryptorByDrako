@@ -5,7 +5,8 @@ const displayEncrypt = document.querySelector("#displayEncrypt");
 const copyText = document.querySelector("#copyText");
 const animationLock = document.querySelector(".animation");
 const haveAnimation = document.querySelector("#have-animation");
-const haveVideo = document.querySelector("#have-video");
+const haveExtraAnimation = document.querySelector("#have-animation-extra");
+const toastAlert = document.querySelector("#toastAlert");
 
 function encrypt(letter) {
   let check = "";
@@ -40,59 +41,77 @@ function activeAnimation(lock) {
   let pushed = `<img src="./icons/${lock}.svg" class="animation" alt="lock-unlock">`;
   haveAnimation.innerHTML = pushed;
 }
-function activeVideo(lock) {
-  if (lock === "charge") {
-    let pushed = `<video class="animation-video-charge" autoplay loop>
-    <source src="./animations/${lock}.mp4" type="video/mp4">
-    </video>`;
-    haveVideo.innerHTML = pushed;
+function activeAnimationExtra(lock) {
+  if (lock === "none") return (haveExtraAnimation.innerHTML = "");
+  let pushed = `<img class="animation-charge" src="./icons/${lock}.svg" />
 
-    //const video = document.querySelector(".animation-video-charge");
-
-    
-  } else {
-    let pushed = `<video class="animation-video" autoplay>
-    <source src="./animations/${lock}.mp4" type="video/mp4">
-    </video>`;
-    haveVideo.innerHTML = pushed;
-  }
+  `;
+  haveExtraAnimation.innerHTML = pushed;
 }
-activeVideo("charge");
+let switchAnimation = "lock";
+let cicle = null;
+function timer(lock) {
+  cicle = setInterval(() => {
+    if (lock === "lock") {
+      lock = "unlock";
+    } else if (lock === "unlock") {
+      lock = "lock";
+    } else {
+      activeAnimationExtra("none");
+    }
+    activeAnimationExtra(lock);
+  }, 2000);
+}
+function toast(message, color) {
+  toastAlert.style.opacity = "1";
+  toastAlert.classList.add("activeAnimation");
+  let pushed = `<p class="toastAlert" style="background-color: ${color};">${message}</p>`;
+  toastAlert.innerHTML = pushed;
 
+  setTimeout(() => {
+    toastAlert.style.opacity = "0";
+    toastAlert.classList.remove("activeAnimation");
+  }, 3000);
+}
+
+timer(switchAnimation);
 btnEncrypt.addEventListener("click", (e) => {
   if (writter.value) {
     activeAnimation("lock");
-    activeVideo("lock");
+    activeAnimationExtra("none");
+    clearInterval(cicle);
+    let check = "";
+    for (let letter in writter.value) {
+      check += encrypt(writter.value[letter]);
+    }
+    displayEncrypt.value = check;
+    writter.value = "";
+    toast("Encriptado", "green");
+  } else {
+    toast("Ingresa un texto", "red");
   }
-  let check = "";
-  for (let letter in writter.value) {
-    check += encrypt(writter.value[letter]);
-  }
-  displayEncrypt.value = check;
-  writter.value = "";
 });
 
 btnDecrypt.addEventListener("click", (e) => {
   if (writter.value) {
     activeAnimation("unlock");
-    activeVideo("unlock");
+    // activeVideo("unlock");
+    displayEncrypt.value = decrypt(writter.value);
+    writter.value = "";
+    toast("Desencriptado", "green");
+  } else {
+    toast("Ingresa un texto", "red");
   }
-
-  displayEncrypt.value = decrypt(writter.value);
-  writter.value = "";
 });
 
 copyText.addEventListener("click", async (e) => {
-  displayEncrypt.focus();
-  displayEncrypt.select();
-
-  await navigator.clipboard.writeText(displayEncrypt.value);
-  /*
-  try {
-    var successful = document.execCommand("copy");
-    var msg = successful ? "successful" : "unsuccessful";
-    console.log("Copying text command was " + msg);
-  } catch (err) {
-    console.log("Oops, unable to copy");
-  }*/
+  if (displayEncrypt.value) {
+    displayEncrypt.focus();
+    displayEncrypt.select();
+    console.log("pado");
+    await navigator.clipboard.writeText(displayEncrypt.value);
+    toast("Copiado", "green");
+  } else {
+    toast("Nada que copiar", "gray");
+  }
 });
