@@ -44,7 +44,16 @@ btnDecrypt.addEventListener("click", (e) => {
 });
 
 copyText.addEventListener("click", async (e) => {
+  displayEncrypt.focus();
   displayEncrypt.select();
-  displayEncrypt.setSelectionRange(0, 99999);
+  
   await navigator.clipboard.writeText(displayEncrypt.value);
+  /*
+  try {
+    var successful = document.execCommand("copy");
+    var msg = successful ? "successful" : "unsuccessful";
+    console.log("Copying text command was " + msg);
+  } catch (err) {
+    console.log("Oops, unable to copy");
+  }*/
 });
