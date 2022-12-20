@@ -92,7 +92,7 @@ btnEncrypt.addEventListener("click", (e) => {
     }
     displayEncrypt.value = check;
     writter.value = "";
-    toast("Encriptado", "green");
+    //toast("Encriptado", "green");
   } else {
     toast("Ingresa un texto", "red");
   }
@@ -103,7 +103,7 @@ btnDecrypt.addEventListener("click", (e) => {
     activeAnimation("unlock");
     displayEncrypt.value = decrypt(writter.value);
     writter.value = "";
-    toast("Desencriptado", "green");
+    //toast("Desencriptado", "green");
   } else {
     toast("Ingresa un texto", "red");
   }
