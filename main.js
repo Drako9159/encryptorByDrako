@@ -16,10 +16,11 @@ function encrypt(letter) {
     o: "ober",
     u: "ufat",
   };
-
   if (values[letter]) return values[letter];
   return letter;
 }
+
+
 function decrypt(letter) {
   let check = "";
   const exp = [
@@ -29,13 +30,18 @@ function decrypt(letter) {
     { o: /ober/g },
     { u: /ufat/g },
   ];
-
   exp.forEach((e) => {
     letter = letter.replace(Object.values(e)[0], Object.keys(e)[0]);
     check = letter;
   });
   return check;
 }
+
+
+
+
+
+
 function activeAnimation(lock) {
   let pushed = `<img src="./icons/${lock}.svg" class="animation" alt="lock-unlock">`;
   haveAnimation.innerHTML = pushed;
@@ -47,6 +53,7 @@ function activeAnimationExtra(lock) {
   `;
   haveExtraAnimation.innerHTML = pushed;
 }
+
 let switchAnimation = "lock";
 let cicle = null;
 function timer(lock) {
@@ -66,7 +73,6 @@ function toast(message, color) {
   toastAlert.classList.add("activeAnimation");
   let pushed = `<p class="toastAlert" style="background-color: ${color};">${message}</p>`;
   toastAlert.innerHTML = pushed;
-
   setTimeout(() => {
     toastAlert.style.opacity = "0";
     toastAlert.classList.remove("activeAnimation");
