@@ -5,8 +5,10 @@ const displayEncrypt = document.querySelector("#displayEncrypt");
 const copyText = document.querySelector("#copyText");
 const animationLock = document.querySelector(".animation");
 const haveAnimation = document.querySelector("#have-animation");
+const haveVideo = document.querySelector("#have-video");
 
 function encrypt(letter) {
+  let check = "";
   const values = {
     e: "enter",
     i: "imes",
@@ -14,6 +16,7 @@ function encrypt(letter) {
     o: "ober",
     u: "ufat",
   };
+
   if (values[letter]) return values[letter];
   return letter;
 }
@@ -37,9 +40,30 @@ function activeAnimation(lock) {
   let pushed = `<img src="./icons/${lock}.svg" class="animation" alt="lock-unlock">`;
   haveAnimation.innerHTML = pushed;
 }
+function activeVideo(lock) {
+  if (lock === "charge") {
+    let pushed = `<video class="animation-video-charge" autoplay loop>
+    <source src="./animations/${lock}.mp4" type="video/mp4">
+    </video>`;
+    haveVideo.innerHTML = pushed;
+
+    //const video = document.querySelector(".animation-video-charge");
+
+    
+  } else {
+    let pushed = `<video class="animation-video" autoplay>
+    <source src="./animations/${lock}.mp4" type="video/mp4">
+    </video>`;
+    haveVideo.innerHTML = pushed;
+  }
+}
+activeVideo("charge");
 
 btnEncrypt.addEventListener("click", (e) => {
-  if (writter.value) activeAnimation("lock");
+  if (writter.value) {
+    activeAnimation("lock");
+    activeVideo("lock");
+  }
   let check = "";
   for (let letter in writter.value) {
     check += encrypt(writter.value[letter]);
@@ -49,7 +73,10 @@ btnEncrypt.addEventListener("click", (e) => {
 });
 
 btnDecrypt.addEventListener("click", (e) => {
-  if (writter.value) activeAnimation("unlock");
+  if (writter.value) {
+    activeAnimation("unlock");
+    activeVideo("unlock");
+  }
 
   displayEncrypt.value = decrypt(writter.value);
   writter.value = "";

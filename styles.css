@@ -161,12 +161,33 @@ main {
     width: 100%;
   }
 }
-#have-animation{
-    background-color: red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#have-animation {
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+#have-video {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.animation-video-charge{
+    width: 320px;
+    position: absolute;
+    top: 120px;
+    
+}
+
+.animation-video {
+  width: 200px;
+  position: absolute;
+  top: 200px;
+  opacity: 0;
+  animation: lock 3s ease;
+}
+
 .animation {
   filter: contrast(1%);
   width: 150px;
@@ -187,6 +208,7 @@ main {
     opacity: 0;
   }
 }
+
 
 footer {
   display: flex;
