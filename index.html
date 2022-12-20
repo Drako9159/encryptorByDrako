@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encryptor</title>
+    <link rel="icon" href="./icons/icon.png">
+    </link>
     <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-    <header>header</header>
-    <main>main</main>
-    <footer>footer</footer>
+    <header>
+        <img src="./images//head-alura.png" alt="alura-icon">
+        <h3>Encryptor</h3>
+    </header>
+    <main>
+        <div class="left">
+            <textarea name="" id="writter" cols="30" rows="20" placeholder="write the text"></textarea>
+            <div class="alert">
+                <img src="./icons/alert.svg" alt="alert">
+                <p>Solo se procesan letras minusculas y sin acentos</p>
+            </div>
+
+            <div class="actions">
+                <button id="encrypt" class="encrypt">Encriptar!</button>
+                <button id="decrypt" class="dencrypt">Desencriptar</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="copy">
+                <textarea name="" id="displayEncrypt" cols="30" disabled
+                    rows="15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse error, nisi laudantium architecto nihil totam! Placeat, consequatur hic magnam ducimus porro fuga. Alias saepe hic quam, magnam ratione quibusdam autem.</textarea>
+                <button id="copyText">Copiar</button>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li>created by Antonio Jaramillo</li>
+            <li><a href="https://github.com/Drako9159" target="_blank"><img src="./icons/github-black.png"
+                        alt="github"></a><a href="https://twitter.com/Drako9159" target="_blank"><img
+                        src="./icons/twitter-black.png" alt="github"></a></li>
+
+        </ul>
+    </footer>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>

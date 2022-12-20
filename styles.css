@@ -1,12 +1,171 @@
-body{
-    background-color: red;
-    margin: 0;
-    padding: 0;
-    max-width: 1600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 95%;
-    border: solid 1px forestgreen;
+@font-face {
+  font-family: montse;
+  src: url("./fonts/Montserrat-Medium.ttf");
+}
+body {
+  background-color: #e8edf8;
+  margin: 0;
+  padding: 0;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: montse;
+}
+header {
+  color: #727374;
+  background-color: #ffffff;
+  font-size: 1.4rem;
+  display: flex;
+  width: 100%;
+  box-shadow: 0 0 10px 0 #919191;
+  justify-content: space-around;
+}
+header img {
+  object-fit: contain;
+  width: 100px;
+}
+main {
+  display: flex;
+
+  width: 100%;
+  height: 500px;
+}
+.left {
+  width: 60%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left textarea {
+  border: none;
+  font-family: montse;
+  font-size: 1.2rem;
+  padding: 10px;
+  width: 70%;
+  margin-top: 1.5rem;
+  resize: none;
+  outline: none;
+  background-color: transparent;
+  color: #727374;
+}
+.left textarea:focus {
+  background-color: none;
+  border: none;
+}
+
+.left .actions {
+  width: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+}
+.left .actions button {
+  font-family: montse;
+  border: none;
+  padding: 13px 50px;
+  border-radius: 10px;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.left .actions .encrypt {
+  background-color: #022b59;
+  color: #ffffff;
+}
+.left .actions .encrypt:hover {
+  box-shadow: 0 0 5px 0 #022b59;
+}
+.left .actions .dencrypt {
+  border: solid 2px #022b59;
+  color: #022b59;
+}
+
+.left .actions .dencrypt:hover {
+  background-color: #022b59;
+  color: #ffffff;
+}
+.left .alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #727374;
+}
+.left .alert img {
+  width: 20px;
+  height: 20px;
+  padding: 0 10px;
+  filter: contrast(1%);
+}
+.right {
+  width: 40%;
+
+  
+}
+.right .copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 0 5px 0 #919191;
+}
+.right .copy textarea {
+  font-family: montse;
+  font-size: 1.2rem;
+  padding: 10px;
+  color: #022b59;
+  width: 90%;
+  resize: none;
+  margin-top: 1rem;
+  border: none;
+  outline: 0;
+  background-color: #ffffff;
+
+}
+.right button {
+  font-family: montse;
+  border: none;
+  padding: 13px 50px;
+  border-radius: 10px;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  border: solid 2px #727374;
+  color: #727374;
+  margin: 10px;
+}
+footer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-weight: bold;
+  color: #6d6d6d;
+  margin-top: 20px;
+}
+footer ul {
+  list-style: none;
+}
+footer ul li {
+  padding: 10px;
+}
+footer ul li a {
+  padding: 5px;
+}
+footer ul li img {
+  width: 40px;
+  object-fit: contain;
+
+  filter: contrast(1%);
+}
+footer ul li a:hover > img {
+  filter: drop-shadow(0 0 5px #7c7c7c);
 }
