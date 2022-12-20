@@ -20,7 +20,6 @@ function encrypt(letter) {
   return letter;
 }
 
-
 function decrypt(letter) {
   let check = "";
   const exp = [
@@ -36,11 +35,6 @@ function decrypt(letter) {
   });
   return check;
 }
-
-
-
-
-
 
 function activeAnimation(lock) {
   let pushed = `<img src="./icons/${lock}.svg" class="animation" alt="lock-unlock">`;
@@ -92,7 +86,6 @@ btnEncrypt.addEventListener("click", (e) => {
     }
     displayEncrypt.value = check;
     writter.value = "";
-    //toast("Encriptado", "green");
   } else {
     toast("Ingresa un texto", "red");
   }
@@ -103,7 +96,6 @@ btnDecrypt.addEventListener("click", (e) => {
     activeAnimation("unlock");
     displayEncrypt.value = decrypt(writter.value);
     writter.value = "";
-    //toast("Desencriptado", "green");
   } else {
     toast("Ingresa un texto", "red");
   }
@@ -115,7 +107,6 @@ copyText.addEventListener("click", async (e) => {
     displayEncrypt.select();
     toast("Copiado", "green");
     await navigator.clipboard.writeText(displayEncrypt.value);
-    
   } else {
     toast("Nada que copiar", "gray");
   }
