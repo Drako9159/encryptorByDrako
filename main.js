@@ -77,7 +77,7 @@ timer(switchAnimation);
 
 function validations(check) {
   if (check.match(/[0-9]/g)) {
-    return "No admine números";
+    return "No admite números";
   } else if (check.match(/[A-Z]/g)) {
     return "Solo letras minúsculas";
   } else if (!check.match(/^[a-z\s]+$/g)) {
