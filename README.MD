@@ -94,7 +94,22 @@ function toast(message, color) {
   }, 3000);
 }
 ````
-- Es necesario conocer los estilos para para aplicar las animaciones:
+- Es necesario conocer los estilos para aplicar las animaciones:
+
+- Las validaciones se realizan con la siguiente función: 📝
+````Javascript
+function validations(check) {
+  if (check.match(/[0-9]/g)) {
+    return "No admine números";
+  } else if (check.match(/[A-Z]/g)) {
+    return "Solo letras minúsculas";
+  } else if (!check.match(/^[a-z\s]+$/g)) {
+    return "No debe tener acentos";
+  }
+  return "passed";
+}
+`````
+Con las validaciones se compueba que no existan números, letras mayúsculas o acentos, de lo contrario se muestra una alerta.
 
 
 Este proyecto fue realizado para el Challenge de ALURA by Oracle Dec 2022. ✔

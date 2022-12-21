@@ -75,17 +75,32 @@ function toast(message, color) {
 
 timer(switchAnimation);
 
+function validations(check) {
+  if (check.match(/[0-9]/g)) {
+    return "No admine números";
+  } else if (check.match(/[A-Z]/g)) {
+    return "Solo letras minúsculas";
+  } else if (!check.match(/^[a-z\s]+$/g)) {
+    return "No debe tener acentos";
+  }
+  return "passed";
+}
+
 btnEncrypt.addEventListener("click", (e) => {
   if (writter.value) {
-    activeAnimation("lock");
-    activeAnimationExtra("none");
-    clearInterval(cicle);
-    let check = "";
-    for (let letter in writter.value) {
-      check += encrypt(writter.value[letter]);
+    if (validations(writter.value) === "passed") {
+      activeAnimation("lock");
+      activeAnimationExtra("none");
+      clearInterval(cicle);
+      let check = "";
+      for (let letter in writter.value) {
+        check += encrypt(writter.value[letter]);
+      }
+      displayEncrypt.value = check;
+      writter.value = "";
+    } else {
+      toast(validations(writter.value), "red");
     }
-    displayEncrypt.value = check;
-    writter.value = "";
   } else {
     toast("Ingresa un texto", "red");
   }
@@ -93,9 +108,13 @@ btnEncrypt.addEventListener("click", (e) => {
 
 btnDecrypt.addEventListener("click", (e) => {
   if (writter.value) {
-    activeAnimation("unlock");
-    displayEncrypt.value = decrypt(writter.value);
-    writter.value = "";
+    if (validations(writter.value) === "passed") {
+      activeAnimation("unlock");
+      displayEncrypt.value = decrypt(writter.value);
+      writter.value = "";
+    } else {
+      toast(validations(writter.value), "red");
+    }
   } else {
     toast("Ingresa un texto", "red");
   }
